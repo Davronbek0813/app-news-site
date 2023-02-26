@@ -1,4 +1,4 @@
-package com.example.appnewssite.template;
+package com.example.appnewssite.entity.template;
 
 import com.example.appnewssite.entity.User;
 import jakarta.persistence.*;

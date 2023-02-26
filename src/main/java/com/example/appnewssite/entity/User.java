@@ -1,17 +1,24 @@
 package com.example.appnewssite.entity;
 
-import com.example.appnewssite.template.AbstarctEntity;
+import com.example.appnewssite.entity.enums.Permission;
+import com.example.appnewssite.entity.template.AbstarctEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.*;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "users")
-public class User extends AbstarctEntity {
+public class User extends AbstarctEntity implements UserDetails{
 
     @Column(nullable = false)
     private String fullName;
@@ -22,4 +29,42 @@ public class User extends AbstarctEntity {
     @Column(nullable = false)
     private String password;
 
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    private Role role;
+
+    private boolean enabled;
+
+    private boolean accountNonExpired=true;
+
+    private boolean accountNonLocked=true;
+
+    private boolean credentialsNonExpired=true;
+
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<Permission> permissionList = this.role.getPermissionList();
+        Set<GrantedAuthority> grantedAuthorities=new HashSet<>();
+
+        for (Permission permission : permissionList) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(permission.name()));
+        }
+
+//        for (Permission permission : permissionList) {
+//            grantedAuthorities.add(new GrantedAuthority() {
+//                @Override
+//                public String getAuthority() {
+//                    return permission.name();
+//                }
+//            });
+//        }
+        return grantedAuthorities;
+    }
+
+
+
+
+
+
 }
+
