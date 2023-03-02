@@ -2,9 +2,7 @@ package com.example.appnewssite.entity;
 
 import com.example.appnewssite.entity.enums.Permission;
 import com.example.appnewssite.entity.template.AbstarctEntity;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,8 +17,10 @@ import java.util.List;
 @Entity
 public class Role extends AbstarctEntity {
 
+    @Column(unique = true,nullable = false)
     private String name;
 
+    @Enumerated(value = EnumType.STRING)
     @ElementCollection(fetch = FetchType.LAZY)
     private List<Permission> permissionList;
 

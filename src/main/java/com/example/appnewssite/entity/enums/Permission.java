@@ -1,19 +1,19 @@
 package com.example.appnewssite.entity.enums;
 
 public enum Permission {
-    ADD_USER,
-    EDIT_USER,
-    DELETE_USER,
-    VIEW_USERS,
-    ADD_ROLE,
-    EDIT_ROLE,
-    DELETE_ROLE,
-    VIEW_ROLES,
-    ADD_POST,
-    EDIT_POST,
-    DELETE_POST,
-    ADD_COMMENT,
-    EDIT_COMMENT,
-    DELETE_COMMENT,
-    DELETE_MY_COMMENT
+    ADD_USER,      //ADMIN
+    EDIT_USER,     //ADMIN
+    DELETE_USER,   //ADMIN
+    VIEW_USERS,    //ADMIN
+    ADD_ROLE,      //ADMIN
+    EDIT_ROLE,     //ADMIN
+    DELETE_ROLE,   //ADMIN
+    VIEW_ROLES,    //ADMIN
+    ADD_POST,      //ADMIN ...
+    EDIT_POST,     //ADMIN....
+    DELETE_POST,   //ADMIN ..
+    ADD_COMMENT,   //ALL
+    EDIT_COMMENT,  //ALL
+    DELETE_MY_COMMENT, //ALL
+    DELETE_COMMENT  //ADMIN ..
 }
