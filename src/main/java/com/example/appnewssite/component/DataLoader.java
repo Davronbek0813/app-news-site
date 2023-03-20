@@ -6,10 +6,10 @@ import com.example.appnewssite.entity.enums.Permission;
 import com.example.appnewssite.repository.RoleRepository;
 import com.example.appnewssite.repository.UserRepository;
 import com.example.appnewssite.utils.AppConstants;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -23,6 +23,9 @@ public class DataLoader implements CommandLineRunner {
     UserRepository userRepository;
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Value("${spring.sql.init.mode}")
     private String initialMode;
@@ -46,7 +49,7 @@ public class DataLoader implements CommandLineRunner {
             userRepository.save(new User(
                     "Admin",
                     "admin",
-                    "admin123",
+                    passwordEncoder.encode("admin123"),
                     admin,
                     true
             ));
@@ -54,7 +57,7 @@ public class DataLoader implements CommandLineRunner {
             userRepository.save(new User(
                     "User",
                     "user",
-                    "user123",
+                    passwordEncoder.encode("user123"),
                     user,
                     true
             ));

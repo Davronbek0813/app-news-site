@@ -1,7 +1,7 @@
 package com.example.appnewssite.entity.template;
 
 import com.example.appnewssite.entity.User;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;

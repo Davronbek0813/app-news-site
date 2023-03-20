@@ -1,6 +1,6 @@
 package com.example.appnewssite.payload;
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,15 +10,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RegsiterDto {
 
-    @NotNull
+    @NotNull(message = "fullName  bo'sh bo'lmasligi kerak")
     private String fullName;
 
-    @NotNull
-    private String username;
+    @NotNull(message = "username bo'sh bo'lmasligi kerak")
+    private  String username;
 
-    @NotNull
+    @NotNull(message = "Parol bo'sh bo'lmasligi kerak")
     private String password;
 
-    @NotNull
+    @NotNull(message = "Takroriy parol bo'sh bo'lmasligi kerak")
     private String prePassword;
 }

@@ -1,8 +1,7 @@
 package com.example.appnewssite.entity;
 
 import com.example.appnewssite.entity.template.AbstarctEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

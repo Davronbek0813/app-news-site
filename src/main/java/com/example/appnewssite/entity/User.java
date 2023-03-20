@@ -3,7 +3,7 @@ package com.example.appnewssite.entity;
 import com.example.appnewssite.entity.enums.Permission;
 import com.example.appnewssite.entity.template.AbstarctEntity;
 import lombok.AllArgsConstructor;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
