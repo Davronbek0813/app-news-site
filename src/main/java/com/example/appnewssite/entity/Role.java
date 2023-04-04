@@ -20,6 +20,9 @@ public class Role extends AbstarctEntity {
     @Column(unique = true,nullable = false)
     private String name;
 
+    @Column(length = 600)
+    private String description;
+
     @Enumerated(value = EnumType.STRING)
     @ElementCollection(fetch = FetchType.LAZY)
     private List<Permission> permissionList;
