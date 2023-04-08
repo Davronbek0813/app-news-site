@@ -19,10 +19,14 @@ public class RoleService {
 
         Role role=new Role(
                 roleDto.getName(),
-                roleDto.getDecription(),
+                roleDto.getDescription(),
                 roleDto.getPermissionList());
 
         roleRepository.save(role);
         return new ApiResponse("Saqlandi",true);
+    }
+
+    public ApiResponse editRole(Long id, RoleDto roleDto) {
+        return new ApiResponse("",true);
     }
 }

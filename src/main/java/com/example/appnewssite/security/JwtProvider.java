@@ -11,32 +11,10 @@ import java.util.Set;
 @Component
 public class JwtProvider {
     static long expireTime=36_000_000;
-   static String secretKey="BuTokenniMaxfiySuziHechKimBilmasin123456789lkqwajhdoiqwjpdojaspdojqwpodjapsjpdaojsdpoqjepdoajsdpoasjdpojwadpojo0";
+   static String secretKey="BuTokenniMaxfiySuziHechKimBilmasin";
 
-    public   String generatedToken(String username, Set<Role> roles){
-//        String token=com.auth0.jwt.JWT.create()
-//                .withSubject(username)
-//                .withIssuedAt(new Date())
-//                .withExpiresAt(new Date(System.currentTimeMillis() + 3_600 * 10000))
-//                .sign(Algorithm.HMAC256(secretKey.getBytes()));
-
-        String  token=Jwts.
-                builder()
-                .setSubject(username)
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + expireTime))
-                .claim("roles",roles)
-                .signWith(SignatureAlgorithm.HS512, secretKey)
-                .compact();
-       return token;
-    }
     public boolean validateToken(String token){
         try {
-
-
-
-
-
             Jwts
                     .parser()
                     .setSigningKey(secretKey)
@@ -46,6 +24,18 @@ public class JwtProvider {
             e.printStackTrace();
         }
         return false;
+    }
+    public   String generatedToken(String username, Role role){
+
+        String  token=Jwts.
+                builder()
+                .setSubject(username)
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + expireTime))
+                .claim("roles",role.getName())
+                .signWith(SignatureAlgorithm.HS512, secretKey)
+                .compact();
+        return token;
     }
 
     public String getUserNameFromToken(String token){

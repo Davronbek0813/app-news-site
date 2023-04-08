@@ -8,13 +8,15 @@ import com.example.appnewssite.repository.RoleRepository;
 import com.example.appnewssite.repository.UserRepository;
 import com.example.appnewssite.utils.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AuthService {
+public class AuthService implements UserDetailsService {
 
     @Autowired
     UserRepository userRepository;
@@ -38,14 +40,14 @@ public class AuthService {
                 passwordEncoder.encode(regsiterDto.getPassword()),
                 roleRepository.findByName(AppConstants.USER).orElseThrow(() -> new ResourseNotFoundExceptions("role", "name", AppConstants.USER)),
                 true
-                );
+        );
 
         userRepository.save(user);
-        return new ApiResponse("Muvaffaqiyatli ro'yxatdan o'tdingiz",true) ;
+        return new ApiResponse("Muvaffaqiyatli ro'yxatdan o'tdingiz", true);
     }
 
     public UserDetails loadUserByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException(username));
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
 
     }
 }

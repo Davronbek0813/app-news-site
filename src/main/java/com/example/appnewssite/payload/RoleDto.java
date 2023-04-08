@@ -18,7 +18,7 @@ public class RoleDto {
     @NotBlank
     private String name;
 
-    private String decription;
+    private String description;
 
     @NotEmpty
     private List<Permission> permissionList;
