@@ -1,4 +1,4 @@
-package com.example.appnewssite.exseptions;
+package com.example.appnewssite.exceptions;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

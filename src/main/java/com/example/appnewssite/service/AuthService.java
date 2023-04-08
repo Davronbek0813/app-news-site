@@ -1,14 +1,13 @@
 package com.example.appnewssite.service;
 
 import com.example.appnewssite.entity.User;
-import com.example.appnewssite.exseptions.ResourseNotFoundExceptions;
+import com.example.appnewssite.exceptions.ResourseNotFoundExceptions;
 import com.example.appnewssite.payload.ApiResponse;
 import com.example.appnewssite.payload.RegsiterDto;
 import com.example.appnewssite.repository.RoleRepository;
 import com.example.appnewssite.repository.UserRepository;
 import com.example.appnewssite.utils.AppConstants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

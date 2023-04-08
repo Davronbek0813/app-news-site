@@ -1,6 +1,7 @@
 package com.example.appnewssite.aop;
 
 import com.example.appnewssite.entity.User;
+import com.example.appnewssite.exceptions.ForbiddenException;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +25,9 @@ public class CheckPermissionExecutor {
             }
         }
 
-
+        if(!exist){
+            throw new ForbiddenException(checkPermission.value(),"Ruxsat yo'q");
+        }
     }
 
 }
