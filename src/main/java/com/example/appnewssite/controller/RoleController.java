@@ -32,7 +32,6 @@ public class RoleController {
 //    @PreAuthorize(value = "hasAuthority('EDIT_ROLE')")
     @CheckPermission(value = "EDIT_ROLE")
     @PutMapping("/{id}")
-
     public HttpEntity<?> editRole(@PathVariable Long id, @Valid @RequestBody RoleDto roleDto){
         ApiResponse apiResponse=roleService.editRole(id,roleDto);
         return ResponseEntity.status(apiResponse.isSucces()?200:409).body(apiResponse);
